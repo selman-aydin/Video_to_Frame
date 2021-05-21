@@ -35,6 +35,7 @@
         android:textStyle="bold"
         android:layout_marginTop="20dp"/>
 
+
     <Button
         android:id="@+id/cameraButton"
         android:layout_width="240dp"

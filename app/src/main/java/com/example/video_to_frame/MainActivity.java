@@ -1,12 +1,18 @@
 package com.example.video_to_frame;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     Button camerabtn;
     private VideoView videoView;
     static final int REQUEST_VIDEO_CAPTURE = 1;
+    AnimatedVectorDrawableCompat avd;
+    AnimatedVectorDrawable avd2;
 
 
 
@@ -27,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         camerabtn = findViewById(R.id.cameraButton);
-        videoView = findViewById(R.id.video_view);
+
+
 
         camerabtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -56,12 +65,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
-            Uri videoUri = intent.getData();
-            videoView.setVideoURI(videoUri);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 1) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            VideoView videoView = findViewById(R.id.video_view);
+            videoView.setVideoURI(data.getData());
+            videoView.start();
+
         }
     }
 }
