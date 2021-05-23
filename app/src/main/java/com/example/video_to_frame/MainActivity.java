@@ -7,17 +7,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -72,10 +79,46 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == 1) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             VideoView videoView = findViewById(R.id.video_view);
-            videoView.setVideoURI(data.getData());
+            System.out.println("lololo");
+            System.out.println(data.getData().getPath());
+            System.out.println(data.getData());
+
             videoView.start();
 
         }
+
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        retriever.setDataSource("/storage/emulated/0/DCIM/Camera/VID_20210523_084504.mp4");
+
+
+        String duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+        float duration_millisec = Integer.parseInt(duration); //duration in millisec
+        float duration_second = duration_millisec / 1000;  //millisec to sec
+        float per_second = duration_second/8;
+
+        for (int i=0; i<8;i++){
+            int saniye = Math.round(per_second*i*1000000);
+            Bitmap frame=retriever.getFrameAtTime((saniye));
+            String filename = Integer.toString(i)+".png";
+            File sd = Environment.getExternalStorageDirectory();
+            File dest = new File(sd, filename);
+
+
+            try {
+                FileOutputStream out = new FileOutputStream(dest);
+                frame.compress(Bitmap.CompressFormat.PNG, 90, out);
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
+
+
+
+
 }
 
