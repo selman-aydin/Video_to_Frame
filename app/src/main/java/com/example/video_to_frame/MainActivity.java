@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,9 +44,11 @@ import org.pytorch.Tensor;
 import org.pytorch.Tensor;
 import org.pytorch.torchvision.TensorImageUtils;
 
+import java.io.IOException;
+
 
 public class MainActivity extends AppCompatActivity {
-    Button camerabtn;
+    Button camerabtn,galleryButton;
     private VideoView videoView;
     TextView txtview;
     static final int REQUEST_VIDEO_CAPTURE = 1;
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         camerabtn = findViewById(R.id.cameraButton);
         txtview   = findViewById(R.id.commandview);
+        galleryButton   = findViewById(R.id.galleryButton);
 
 
 
@@ -74,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cameraStart(videoView);
+            }
+        });
+
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                galleryStart(videoView);
             }
         });
     }
@@ -114,10 +125,21 @@ public class MainActivity extends AppCompatActivity {
             String real_path = cursor.getString(column_index);
             System.out.println(real_path);
             videoView.setVideoURI(data.getData());
+            String fileName = "video6.mp4";
+
             videoView.start();
 
             MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-            retriever.setDataSource(real_path);
+            //retriever.setDataSource("/storage/emulated/0/Download/video3.mp4");
+
+            try {
+                System.out.println(String.valueOf(getAssets().openFd(fileName).createInputStream()));
+                retriever.setDataSource(getAssets().openFd(fileName).getFileDescriptor(),getAssets().openFd(fileName).getStartOffset(),getAssets().openFd(fileName).getDeclaredLength());
+                System.out.println("ahha");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //  /storage/emulated/0/Download/1.mp4
 
 
             String duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
@@ -131,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i==0) {
                     System.out.println(Integer.toString(saniye));
                      inputImage0 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
-                     inputImage0h = Bitmap.createScaledBitmap(inputImage0, 80, 80, true);
+                     inputImage0h = Bitmap.createScaledBitmap(inputImage0, 299, 299, true);
                     String filename0 = Integer.toString(i) + ".png";
                     File sd0 = Environment.getExternalStorageDirectory();
                     File dest0 = new File(sd0, filename0);
@@ -147,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i==1) {
                     System.out.println(Integer.toString(saniye));
                      inputImage1 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
-                     inputImage1h = Bitmap.createScaledBitmap(inputImage1, 80, 80, true);
+                     inputImage1h = Bitmap.createScaledBitmap(inputImage1, 299, 299, true);
                     String filename1 = Integer.toString(i) + ".png";
                     File sd1 = Environment.getExternalStorageDirectory();
                     File dest1 = new File(sd1, filename1);
@@ -163,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i==2) {
                     System.out.println(Integer.toString(saniye));
                      inputImage2 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
-                     inputImage2h = Bitmap.createScaledBitmap(inputImage2, 80, 80, true);
+                     inputImage2h = Bitmap.createScaledBitmap(inputImage2, 299, 299, true);
                     String filename2 = Integer.toString(i) + ".png";
                     File sd2 = Environment.getExternalStorageDirectory();
                     File dest2 = new File(sd2, filename2);
@@ -179,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i==3) {
                     System.out.println(Integer.toString(saniye));
                      inputImage3 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
-                     inputImage3h = Bitmap.createScaledBitmap(inputImage3, 80, 80, true);
+                     inputImage3h = Bitmap.createScaledBitmap(inputImage3, 299, 299, true);
                     String filename3 = Integer.toString(i) + ".png";
                     File sd3 = Environment.getExternalStorageDirectory();
                     File dest3 = new File(sd3, filename3);
@@ -195,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i==4) {
                     System.out.println(Integer.toString(saniye));
                      inputImage4 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
-                     inputImage4h = Bitmap.createScaledBitmap(inputImage4, 80, 80, true);
+                     inputImage4h = Bitmap.createScaledBitmap(inputImage4, 299, 299, true);
                     String filename4 = Integer.toString(i) + ".png";
                     File sd4 = Environment.getExternalStorageDirectory();
                     File dest4 = new File(sd4, filename4);
@@ -211,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i==5) {
                     System.out.println(Integer.toString(saniye));
                      inputImage5 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
-                     inputImage5h = Bitmap.createScaledBitmap(inputImage5, 80, 80, true);
+                     inputImage5h = Bitmap.createScaledBitmap(inputImage5, 299, 299, true);
                     String filename5 = Integer.toString(i) + ".png";
                     File sd5 = Environment.getExternalStorageDirectory();
                     File dest5 = new File(sd5, filename5);
@@ -227,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i==6) {
                     System.out.println(Integer.toString(saniye));
                      inputImage6 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
-                     inputImage6h = Bitmap.createScaledBitmap(inputImage6, 80, 80, true);
+                     inputImage6h = Bitmap.createScaledBitmap(inputImage6, 299, 299, true);
                     String filename6 = Integer.toString(i) + ".png";
                     File sd6 = Environment.getExternalStorageDirectory();
                     File dest6 = new File(sd6, filename6);
@@ -243,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i==7) {
                     System.out.println(Integer.toString(saniye));
                      inputImage7 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
-                     inputImage7h = Bitmap.createScaledBitmap(inputImage7, 80, 80, true);
+                     inputImage7h = Bitmap.createScaledBitmap(inputImage7, 299, 299, true);
                     String filename7 = Integer.toString(i) + ".png";
                     File sd7 = Environment.getExternalStorageDirectory();
                     File dest7 = new File(sd7, filename7);
@@ -277,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
     private String generateCaption() {
 //        mModuleEncoder = PyTorchAndroid.loadModuleFromAsset(getAssets(), "encoder.pth");
 //        mModuleDecoder = PyTorchAndroid.loadModuleFromAsset(getAssets(), "decoder.pth");
-        mModuleGenerator = PyTorchAndroid.loadModuleFromAsset(getAssets(), "generator.pth");
+        mModuleGenerator = PyTorchAndroid.loadModuleFromAsset(getAssets(), "generator3.pth");
 
         String json;
         JSONObject wrd2idx;
@@ -340,6 +362,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void galleryStart(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent,1);
+
+    }
 
 
 
