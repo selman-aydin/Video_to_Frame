@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -115,30 +116,31 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == 1) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             VideoView videoView = findViewById(R.id.video_view);
-            System.out.println("lololo");
-            System.out.println(data.getData().getPath());
-            System.out.println(data.getData());
-            String[] proj = { MediaStore.Images.Media.DATA };
-            Cursor cursor = this.getContentResolver().query(data.getData(), proj, null, null, null);
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            String real_path = cursor.getString(column_index);
-            System.out.println(real_path);
-            videoView.setVideoURI(data.getData());
-            String fileName = "video6.mp4";
 
+            //String[] proj = { MediaStore.Images.Media.DATA };
+            //Cursor cursor = this.getContentResolver().query(data.getData(), proj, null, null, null);
+            //int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            //cursor.moveToFirst();
+            //String real_path = cursor.getString(column_index);
+
+            videoView.setVideoURI(data.getData());
             videoView.start();
 
+            String fileName = "video5.mp4";
+
+            Context context = getApplicationContext();
             MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+            retriever.setDataSource(context, data.getData());
+
             //retriever.setDataSource("/storage/emulated/0/Download/video3.mp4");
 
-            try {
-                System.out.println(String.valueOf(getAssets().openFd(fileName).createInputStream()));
-                retriever.setDataSource(getAssets().openFd(fileName).getFileDescriptor(),getAssets().openFd(fileName).getStartOffset(),getAssets().openFd(fileName).getDeclaredLength());
-                System.out.println("ahha");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            //try {
+                //System.out.println(String.valueOf(getAssets().openFd(fileName).createInputStream()));
+                //retriever.setDataSource(getAssets().openFd(fileName).getFileDescriptor(),getAssets().openFd(fileName).getStartOffset(),getAssets().openFd(fileName).getDeclaredLength());
+                //System.out.println("ahha");
+            //} catch (IOException e) {
+              //  e.printStackTrace();
+            //}
             //  /storage/emulated/0/Download/1.mp4
 
 
