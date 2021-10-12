@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 //        mImageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
 //        //        Camera Intent
 //        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
+//        cameraIntent.putExtracamera.png(MediaStore.EXTRA_OUTPUT, mImageUri);
 //        startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
 //
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
@@ -265,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if (i==7) {
+                    System.out.println(Float.toString(duration_millisec));
                     System.out.println(Integer.toString(saniye));
                      inputImage7 = retriever.getFrameAtTime((saniye),MediaMetadataRetriever.OPTION_CLOSEST);
                      inputImage7h = Bitmap.createScaledBitmap(inputImage7, 299, 299, true);
