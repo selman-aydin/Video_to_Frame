@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,15 +14,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/frame"
+        android:background="@drawable/videobackground"
+        >
 
         <VideoView
             android:id="@+id/video_view"
-            android:layout_width="398dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:padding="5dp" />
+            android:padding="5dp"
+            />
 
     </FrameLayout>
 
@@ -31,31 +36,66 @@
         android:id="@+id/commandview"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:layout_below="@+id/frame"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:textStyle="bold"
         android:layout_marginTop="5dp"
         android:background="@drawable/textviewbackground"
+        android:gravity="center"
         android:padding="5dp"
-        />
-
-
-    <Button
-        android:id="@+id/cameraButton"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/captionLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/ic_capture_videocam"></Button>
+        android:layout_below="@+id/commandview"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
 
-    <Button
-        android:id="@+id/galleryButton"
+        <Button
+            android:id="@+id/captionButton"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Caption"
+            android:textColor="#eef1f5"
+            ></Button>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/buttonlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/ic_gallery_image_24"></Button>
+        android:layout_below="@+id/captionLayout"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
 
+        <Button
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_capture_videocam"></Button>
+
+        <Button
+            android:id="@+id/galleryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_gallery_image_24"></Button>
+
+
+    </LinearLayout>
+
+    <!---
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -63,6 +103,6 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:src="@drawable/ic_capture_videocam" />
+    -->
 
-
-</LinearLayout>
+</RelativeLayout>

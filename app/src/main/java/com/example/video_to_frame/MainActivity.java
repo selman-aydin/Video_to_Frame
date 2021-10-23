@@ -46,6 +46,7 @@ import org.pytorch.Tensor;
 import org.pytorch.torchvision.TensorImageUtils;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -302,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
     private String generateCaption() {
 //        mModuleEncoder = PyTorchAndroid.loadModuleFromAsset(getAssets(), "encoder.pth");
 //        mModuleDecoder = PyTorchAndroid.loadModuleFromAsset(getAssets(), "decoder.pth");
-        mModuleGenerator = PyTorchAndroid.loadModuleFromAsset(getAssets(), "generator3.pth");
+        mModuleGenerator = PyTorchAndroid.loadModuleFromAsset(getAssets(), "generator_selman.pth");
 
         String json;
         JSONObject wrd2idx;
@@ -342,6 +343,7 @@ public class MainActivity extends AppCompatActivity {
                 TensorImageUtils.TORCHVISION_NORM_MEAN_RGB, TensorImageUtils.TORCHVISION_NORM_STD_RGB);
 
         // running the model
+
 //        final Tensor featureTensor = mModuleGenerator.forward(IValue.from(inputTensor)).toTensor();
         final Tensor featureTensor = mModuleGenerator.forward(IValue.from(inputTensor0),IValue.from(inputTensor1),IValue.from(inputTensor2),IValue.from(inputTensor3),
                 IValue.from(inputTensor4),IValue.from(inputTensor5),IValue.from(inputTensor6),IValue.from(inputTensor7)).toTensor();
