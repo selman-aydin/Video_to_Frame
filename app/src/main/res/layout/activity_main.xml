@@ -4,29 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@drawable/backgroundcolour"
     android:orientation="vertical"
-    android:background="@drawable/backgroundcolour">
+    tools:context=".MainActivity">
 
     <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="480dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/videobackground"
+        android:outlineProvider="background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:id="@+id/frame"
-        android:background="@drawable/videobackground"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <VideoView
             android:id="@+id/video_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="5dp"
+
             />
 
     </FrameLayout>
@@ -43,14 +44,15 @@
         android:gravity="center"
         android:padding="5dp"
         android:textStyle="bold" />
+
     <LinearLayout
         android:id="@+id/captionLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/commandview"
-        android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/captionButton"
@@ -59,8 +61,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:text="Caption"
-            android:textColor="#eef1f5"
-            ></Button>
+            android:textColor="#eef1f5"></Button>
 
     </LinearLayout>
 
@@ -70,8 +71,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/captionLayout"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/cameraButton"
