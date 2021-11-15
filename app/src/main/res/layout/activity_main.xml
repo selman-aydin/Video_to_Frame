@@ -11,7 +11,7 @@
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/margin_small"
+        android:layout_margin="@dimen/margin_medium"
         android:background="@mipmap/video_frame"
         android:padding="@dimen/padding_xx_large"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
@@ -41,6 +41,7 @@
         android:paddingTop="@dimen/padding_small"
         android:paddingEnd="@dimen/margin_medium"
         android:paddingBottom="@dimen/padding_small"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,51 +49,73 @@
         tools:text="Caption result will be presented here." />
 
 
-    <FrameLayout
-        android:id="@+id/cameraButton_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_camera_background"
-        android:padding="@dimen/margin_small"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/layout_buttons_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/commandview">
 
-        <Button
-            android:id="@+id/cameraButton"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
-            android:background="@drawable/ic_capture_videocam" />
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/cameraButton_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_camera_background"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cameraButton"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:background="@drawable/ic_capture_videocam"
+                android:backgroundTint="@color/white" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <FrameLayout
-        android:id="@+id/galleryButton_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_gallery_background"
-        android:padding="@dimen/padding_small"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/layout_buttons_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guideline4"
+        app:layout_constraintStart_toStartOf="@id/guideline4"
         app:layout_constraintTop_toBottomOf="@id/commandview">
 
-        <Button
-            android:id="@+id/galleryButton"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
-            android:background="@drawable/ic_gallery_image_24" />
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/galleryButton_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_gallery_background"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/galleryButton"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:background="@drawable/ic_gallery_image_24"
+                android:backgroundTint="@color/white" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:layout_width="2dp"
         android:layout_height="0dp"
         android:background="@color/gray_level_5"
-        app:layout_constraintTop_toBottomOf="@id/commandview"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline4"
         app:layout_constraintStart_toStartOf="@id/guideline4"
-        app:layout_constraintEnd_toEndOf="@id/guideline4"/>
+        app:layout_constraintTop_toBottomOf="@id/commandview" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
