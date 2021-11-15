@@ -48,65 +48,41 @@
         app:layout_constraintTop_toBottomOf="@id/guideline3"
         tools:text="Caption result will be presented here." />
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/layout_buttons_background"
+    <FrameLayout
+        android:id="@+id/cameraButton_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_camera_background"
+        android:padding="@dimen/padding_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline4"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/commandview">
 
-        <FrameLayout
-            android:id="@+id/cameraButton_frame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_camera_background"
-            android:padding="@dimen/margin_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cameraButton"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/ic_capture_videocam"
+            android:backgroundTint="@color/white" />
+    </FrameLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/cameraButton"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/button_height"
-                android:background="@drawable/ic_capture_videocam"
-                android:backgroundTint="@color/white" />
-        </FrameLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/layout_buttons_background"
+    <FrameLayout
+        android:id="@+id/galleryButton_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_gallery_background"
+        android:padding="@dimen/padding_medium"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline4"
         app:layout_constraintTop_toBottomOf="@id/commandview">
 
-        <FrameLayout
-            android:id="@+id/galleryButton_frame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_gallery_background"
-            android:padding="@dimen/margin_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/galleryButton"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/button_height"
-                android:background="@drawable/ic_gallery_image_24"
-                android:backgroundTint="@color/white" />
-        </FrameLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/galleryButton"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/ic_gallery_image_24"
+            android:backgroundTint="@color/white" />
+    </FrameLayout>
 
     <View
         android:layout_width="2dp"
