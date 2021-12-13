@@ -33,12 +33,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.LongBuffer;
+import java.text.DecimalFormat;
 
 
 public class MainActivity extends AppCompatActivity {
     static final int REQUEST_VIDEO_CAPTURE = 1;
     Button camerabtn, galleryButton;
-    TextView txtview;
+    TextView txtview,timingtxt;
     AnimatedVectorDrawableCompat avd;
     AnimatedVectorDrawable avd2;
     private VideoView videoView;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         camerabtn = findViewById(R.id.cameraButton);
         txtview = findViewById(R.id.commandview);
         galleryButton = findViewById(R.id.galleryButton);
+        timingtxt = findViewById(R.id.timing);
         videoView.setClipToOutline(true);
 
         camerabtn.setOnClickListener(v -> cameraStart(videoView));
@@ -266,9 +268,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+            double startTime = System.nanoTime();
             String created_caption = generateCaption();
             txtview.setText(created_caption);
             System.out.println(created_caption);
+            double endTime = System.nanoTime();
+            timingtxt.setText((new DecimalFormat("##.##").format((endTime-startTime)/1000000000))+" second");
+
 
 
         }
