@@ -18,8 +18,17 @@
         <entry key="app/src/main/res/drawable/videobackground.xml" value="0.37135416666666665" />
         <entry key="app/src/main/res/drawable/videoviewarkaplan.xml" value="0.37135416666666665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/arrays.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/backgroundcolour.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/main_preference.xml" value="0.26358695652173914" />
+        <entry key="app/src/main/res/layout/menu.xml" value="0.26358695652173914" />
         <entry key="app/src/main/res/layout/textviewbackground.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.27717391304347827" />
+        <entry key="app/src/main/res/layout/videobackground.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/camerabutton.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/xml/main_preference.xml" value="0.19739583333333333" />
       </map>
     </option>
   </component>

@@ -8,16 +8,21 @@ import android.media.MediaMetadataRetriever;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.Preference;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import org.json.JSONException;
@@ -35,6 +40,22 @@ import java.io.InputStream;
 import java.nio.LongBuffer;
 import java.text.DecimalFormat;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import java.util.ArrayList;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
+import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentification;
+
+import com.google.mlkit.common.model.DownloadConditions;
+import com.google.mlkit.nl.translate.TranslateLanguage;
+import com.google.mlkit.nl.translate.Translation;
+import com.google.mlkit.nl.translate.Translator;
+import com.google.mlkit.nl.translate.TranslatorOptions;
+
 
 public class MainActivity extends AppCompatActivity {
     static final int REQUEST_VIDEO_CAPTURE = 1;
@@ -48,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private LongBuffer mInputTensorBuffer;
     private Bitmap inputImage0, inputImage1, inputImage2, inputImage3, inputImage4, inputImage5, inputImage6, inputImage7;
     private Bitmap inputImage0h, inputImage1h, inputImage2h, inputImage3h, inputImage4h, inputImage5h, inputImage6h, inputImage7h;
+    private static int selectedLanguage = 1;
 
 
     @Override
@@ -61,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         galleryButton = findViewById(R.id.galleryButton);
         timingtxt = findViewById(R.id.timing);
         videoView.setClipToOutline(true);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         camerabtn.setOnClickListener(v -> cameraStart(videoView));
         galleryButton.setOnClickListener(v -> galleryStart(videoView));
@@ -267,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-
+            translateTextToLanguage();
             double startTime = System.nanoTime();
             String created_caption = generateCaption();
             txtview.setText(created_caption);
@@ -357,6 +381,171 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.item_preference:
+                goToPreference();
+                return true;
+//            case R.id.logOut:
+//                startActivity(new Intent(MainActivity.this, MainActivity.class));
+//                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    private void goToPreference(){
+        Intent intent = new Intent(MainActivity.this, com.example.video_to_frame.Preference.class);
+        startActivity(intent);
+    }
+
+    public static int getSelectedLanguage(int selectedLanguage) {
+        Log.d("DEBUG", "LANGUAGE IS SELECTED");
+        Log.d("DEBUG", String.valueOf(selectedLanguage));
+        return selectedLanguage;
+    }
+
+    public static void setSelectedLanguage(int state) {
+        selectedLanguage = state;
+    }
+
+    private void getLangCode(){
+        String langCode = null;
+        getSelectedLanguage(selectedLanguage);
+        if(selectedLanguage == 1){langCode = "en";}
+        if(selectedLanguage == 2){langCode = "af";}
+        if(selectedLanguage == 3){langCode = "ar";}
+        if(selectedLanguage == 4){langCode = "az";}
+        if(selectedLanguage == 5){langCode = "bg";}
+        if(selectedLanguage == 6){langCode = "ca";}
+        if(selectedLanguage == 7){langCode = "zh";}
+        if(selectedLanguage == 8){langCode = "hr";}
+        if(selectedLanguage == 9){langCode = "cs";}
+        if(selectedLanguage == 10){langCode = "da";}
+        if(selectedLanguage == 11){langCode = "nl";}
+        if(selectedLanguage == 12){langCode = "et";}
+        if(selectedLanguage == 13){langCode = "fi";}
+        if(selectedLanguage == 14){langCode = "fr";}
+        if(selectedLanguage == 15){langCode = "gl";}
+        if(selectedLanguage == 16){langCode = "ka";}
+        if(selectedLanguage == 17){langCode = "de";}
+        if(selectedLanguage == 18){langCode = "el";}
+        if(selectedLanguage == 19){langCode = "hi";}
+        if(selectedLanguage == 20){langCode = "hu";}
+        if(selectedLanguage == 21){langCode = "is";}
+        if(selectedLanguage == 22){langCode = "id";}
+        if(selectedLanguage == 23){langCode = "it";}
+        if(selectedLanguage == 24){langCode = "ja";}
+        if(selectedLanguage == 25){langCode = "ko";}
+        if(selectedLanguage == 26){langCode = "lv";}
+        if(selectedLanguage == 27){langCode = "lt";}
+        if(selectedLanguage == 28){langCode = "ms";}
+        if(selectedLanguage == 29){langCode = "no";}
+        if(selectedLanguage == 30){langCode = "fa";}
+        if(selectedLanguage == 31){langCode = "pl";}
+        if(selectedLanguage == 32){langCode = "pt";}
+        if(selectedLanguage == 33){langCode = "ro";}
+        if(selectedLanguage == 34){langCode = "ru";}
+        if(selectedLanguage == 35){langCode = "sr";}
+        if(selectedLanguage == 36){langCode = "sk";}
+        if(selectedLanguage == 37){langCode = "sl";}
+        if(selectedLanguage == 38){langCode = "es";}
+        if(selectedLanguage == 39){langCode = "sv";}
+        if(selectedLanguage == 40){langCode = "th";}
+        if(selectedLanguage == 41){langCode = "tr";}
+        if(selectedLanguage == 42){langCode = "uk";}
+        if(selectedLanguage == 43){langCode = "vi";}
+        if(selectedLanguage == 44){langCode = "cy";}
+        translateText(langCode);
+
+    }
+
+    private void translateText(String langCode){
+
+        TranslatorOptions options = new TranslatorOptions.Builder()
+                .setSourceLanguage(TranslateLanguage.ENGLISH)
+//                //to language
+                .setTargetLanguage(langCode)
+                .build();
+
+        final Translator translator = Translation.getClient(options);
+
+        Log.d("DEBUG",txtview.getText().toString());
+        DownloadConditions conditions = new DownloadConditions.Builder()
+                .requireWifi()
+                .build();
+        translator.downloadModelIfNeeded(conditions)
+                .addOnSuccessListener(
+                        new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void v) {
+                                Log.d("translator", "downloaded lang  model");
+                                translator.translate(txtview.getText().toString())
+                                        .addOnSuccessListener(new OnSuccessListener<String>() {
+                                            @Override
+                                            public void onSuccess(String translatedText) {
+                                                txtview.setText(translatedText);
+
+                                                Log.d("translator", translatedText);
+
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d("translator", "ERROR");
+
+                                            }
+                                        });
+                            }
+                        })
+                .addOnFailureListener(
+                        new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("translator", "FAILURE");
+                            }
+                        });
+    }
+
+    public void translateTextToLanguage() {
+        //First identify the language of the entered text
+        FirebaseLanguageIdentification languageIdentifier =
+                FirebaseNaturalLanguage.getInstance().getLanguageIdentification();
+        languageIdentifier.identifyLanguage(txtview.getText().toString())
+                .addOnSuccessListener(
+                        new OnSuccessListener<String>() {
+                            @Override
+                            public void onSuccess(@Nullable String languageCode) {
+                                if (languageCode != "und") {
+                                    Log.d("translator", "lang " + languageCode);
+                                    //download translator for the identified language
+                                    // and translate the entered text into english
+                                    getLangCode();
+
+                                } else {
+                                    Toast.makeText(MainActivity.this,
+                                            "Could not identify language of the text entered",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        })
+                .addOnFailureListener(
+                        new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MainActivity.this,
+                                        "Problem in identifying language of the text entered",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        });
+    }
 
 }
 

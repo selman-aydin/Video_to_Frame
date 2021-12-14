@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Video_to_Frame</string>
     <string name="caption">Caption</string>
+    <string name="title_activity_main2">MainActivity</string>
 </resources>
