@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.3769230769230769" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/aaa.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/aaaa.xml" value="0.21354166666666666" />
@@ -13,22 +14,28 @@
         <entry key="app/src/main/res/drawable/ic_capture_videocam.xml" value="0.37135416666666665" />
         <entry key="app/src/main/res/drawable/ic_capture_videocam_.xml" value="0.37135416666666665" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.37135416666666665" />
+        <entry key="app/src/main/res/drawable/launcher_screen_with_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/launcher_screen_with_logo.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/layout_background.xml" value="0.37083333333333335" />
         <entry key="app/src/main/res/drawable/rounded_video_background.xml" value="0.37135416666666665" />
+        <entry key="app/src/main/res/drawable/textview_caption_background.xml" value="0.2265" />
         <entry key="app/src/main/res/drawable/textviewbackground.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/videobackground.xml" value="0.37135416666666665" />
         <entry key="app/src/main/res/drawable/videoviewarkaplan.xml" value="0.37135416666666665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/arrays.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/backgroundcolour.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/main_preference.xml" value="0.26358695652173914" />
         <entry key="app/src/main/res/layout/menu.xml" value="0.26358695652173914" />
+        <entry key="app/src/main/res/layout/splashfile.xml" value="0.14" />
         <entry key="app/src/main/res/layout/textviewbackground.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/videobackground.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/camerabutton.xml" value="0.21354166666666666" />
-        <entry key="app/src/main/res/xml/main_preference.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/xml/main_preference.xml" value="0.1643192488262911" />
       </map>
     </option>
   </component>

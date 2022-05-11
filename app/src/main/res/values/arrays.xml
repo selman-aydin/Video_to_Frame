@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="language_names">
-        <item>English</item>Dutch
+        <item>English</item>
         <item>Afrikaans</item>
         <item>Arabic</item>
         <item>Azerbaijani</item>
@@ -94,4 +94,14 @@
         <item>44</item>
 
     </string-array>
+    <string-array name="app_mode">
+        <item>Video Captioning</item>
+        <item>Image Captioning</item>
+    </string-array>
+
+    <string-array name="mode_values">
+    <item>1</item>
+    <item>2</item>
+    </string-array>
+
 </resources>

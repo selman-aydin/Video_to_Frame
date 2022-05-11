@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="40dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#572A0B"
-    app:titleTextColor="#ffffff"
+    android:background="@drawable/layout_background"
+    app:titleTextColor="#34495e"
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">

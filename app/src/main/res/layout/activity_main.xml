@@ -19,8 +19,10 @@
         android:padding="@dimen/padding_xx_large"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0">
 
         <VideoView
             android:id="@+id/video_view"
@@ -28,46 +30,50 @@
             android:layout_height="match_parent"
             android:layout_gravity="center" />
 
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/commandview"
-        style="@style/CaptionTextStyle"
-        android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline3"
-        tools:text="Caption result will be presented here." />
 
-    <TextView
-        android:id="@+id/timing"
-        style="@style/CaptionTextStyle"
-        android:layout_width="wrap_content"
-        app:drawableStartCompat="@drawable/ic_timing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/commandview"
-        tools:text="timing" />
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="@color/gray_level_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guideline4"
+        app:layout_constraintTop_toBottomOf="@id/timing"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <FrameLayout
-        android:id="@+id/cameraButton_frame"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_camera_background"
-        android:padding="@dimen/padding_medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guideline4"
-        app:layout_constraintTop_toBottomOf="@id/timing">
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.69" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cameraButton"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
-            android:background="@drawable/ic_capture_videocam"
-            android:backgroundTint="@color/white" />
-    </FrameLayout>
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="@color/gray_level_5"
+        app:layout_constraintBottom_toTopOf="@id/timing"
+        app:layout_constraintEnd_toEndOf="@id/guideline4"
+        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintStart_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/commandview"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
     <FrameLayout
         android:id="@+id/galleryButton_frame"
@@ -77,7 +83,8 @@
         android:padding="@dimen/padding_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline4"
-        app:layout_constraintTop_toBottomOf="@id/timing">
+        app:layout_constraintTop_toBottomOf="@id/timing"
+        app:layout_constraintVertical_bias="0.509">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/galleryButton"
@@ -87,37 +94,54 @@
             android:backgroundTint="@color/white" />
     </FrameLayout>
 
-    <View
-        android:layout_width="2dp"
-        android:layout_height="0dp"
-        android:background="@color/gray_level_5"
-        app:layout_constraintBottom_toTopOf="@id/timing"
-        app:layout_constraintEnd_toEndOf="@id/guideline4"
-        app:layout_constraintStart_toStartOf="@id/guideline3"
-        app:layout_constraintTop_toBottomOf="@id/commandview" />
 
-    <View
-        android:layout_width="2dp"
-        android:layout_height="0dp"
-        android:background="@color/gray_level_5"
+    <FrameLayout
+        android:id="@+id/cameraButton_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_camera_background"
+        android:padding="@dimen/padding_medium"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline4"
-        app:layout_constraintStart_toStartOf="@id/guideline4"
-        app:layout_constraintTop_toBottomOf="@id/timing" />
+        app:layout_constraintEnd_toStartOf="@id/guideline4"
+        app:layout_constraintTop_toBottomOf="@id/timing"
+        app:layout_constraintVertical_bias="0.509">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cameraButton"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/ic_capture_videocam"
+            android:backgroundTint="@color/white" />
+    </FrameLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
+    <TextView
+        android:id="@+id/timing"
+        style="@style/CaptionTextStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        android:layout_marginTop="20dp"
+        app:drawableStartCompat="@drawable/ic_timing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commandview"
+        tools:text="timing"
+        android:background="@drawable/textviewbackground"/>
+
+    <TextView
+        android:id="@+id/commandview"
+        style="@style/CaptionTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline3"
+        tools:text="Caption result will be presented here."
+        android:background="@drawable/textviewbackground"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
