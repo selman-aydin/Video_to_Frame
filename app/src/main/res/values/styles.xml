@@ -14,7 +14,7 @@
         <item name="android:background">@drawable/textview_caption_background</item>
         <item name="android:gravity">center</item>
         <item name='android:visibility'>gone</item>
-        <item name="android:layout_marginTop">@dimen/margin_x_large</item>
+        <item name="android:layout_marginTop">@dimen/margin_large</item>
         <item name="android:layout_marginStart">@dimen/margin_large</item>
         <item name="android:layout_marginEnd">@dimen/margin_large</item>
         <item name="android:paddingStart">@dimen/margin_medium</item>

@@ -464,6 +464,8 @@ public class MainActivity extends AppCompatActivity {
             }
             videoView.setVisibility(View.VISIBLE);
             imgView.setVisibility(View.INVISIBLE);
+            timingtxt.setVisibility(View.VISIBLE);
+            txtview.setVisibility(View.VISIBLE);
             txtview.setText(created_caption);
             System.out.println(created_caption);
             double endTime = System.nanoTime();
@@ -480,6 +482,8 @@ public class MainActivity extends AppCompatActivity {
 
             bitmapImage = (Bitmap) data.getExtras().get("data");
             imgView.setImageBitmap(bitmapImage);
+            timingtxt.setVisibility(View.VISIBLE);
+            txtview.setVisibility(View.VISIBLE);
             videoView.setVisibility(View.INVISIBLE);
             imgView.setVisibility(View.VISIBLE);
             String generatedCaption = null;
@@ -505,6 +509,8 @@ public class MainActivity extends AppCompatActivity {
             }
             videoView.setVisibility(View.INVISIBLE);
             imgView.setVisibility(View.VISIBLE);
+            timingtxt.setVisibility(View.VISIBLE);
+            txtview.setVisibility(View.VISIBLE);
             String generatedCaption = null;
             try {
                 double startTime = System.nanoTime();
