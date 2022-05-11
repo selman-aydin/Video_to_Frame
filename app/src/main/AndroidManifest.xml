@@ -25,11 +25,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="com.example.video_to_frame.MainActivity2"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
-
         <activity android:name="com.example.video_to_frame.MainActivity"
             android:exported="true" />
 

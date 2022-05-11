@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/layout_background"
     tools:context=".MainActivity">
+
     <include
-        layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <FrameLayout
         android:id="@+id/frame"
@@ -55,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.69" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <View
         android:layout_width="2dp"
@@ -125,23 +126,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/commandview"
         tools:text="timing"
-        android:background="@drawable/textviewbackground"/>
+        tools:visibility="visible"/>
 
     <TextView
         android:id="@+id/commandview"
         style="@style/CaptionTextStyle"
         android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="@dimen/margin_small"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/toggleGroup"
         tools:text="Caption result will be presented here."
-        android:background="@drawable/textviewbackground"
-        />
+        tools:visibility="visible"/>
+
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_large"
+        app:checkedButton="@id/button_imageCaptioning"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline3"
+        app:singleSelection="true">
+
+        <Button
+            android:id="@+id/button_imageCaptioning"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/image" />
+
+        <Button
+            android:id="@+id/button_videoCaptioning"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/video" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
