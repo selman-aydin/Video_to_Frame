@@ -14,17 +14,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="Mode">
-
-        <ListPreference
-            android:key="mode_select"
-            android:title="Select Mode"
-            android:summary="Video Captioning (Default Mode)"
-            android:entries="@array/app_mode"
-            android:entryValues="@array/mode_values"/>
-
-    </PreferenceCategory>
 
 
 </PreferenceScreen>

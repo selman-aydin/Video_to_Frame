@@ -16,8 +16,9 @@ public class Preference extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.main_preference);
         listPreference = findPreference("language_select");
-        listPreference.setSummary("English");
+
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -252,24 +253,7 @@ public class Preference extends PreferenceActivity {
             return true;
         });
 
-        android.preference.Preference ModeListPreference = findPreference("mode_select");
-        ModeListPreference.setOnPreferenceChangeListener((android.preference.Preference.OnPreferenceChangeListener) (preference2, newmodeValue) -> {
-            String key_mode = (String) newmodeValue;
 
-            if ("1".equals(key_mode)) {
-                MainActivity.setSelectedMode(1);
-                Toast.makeText(this, "Video Captioning is selected", Toast.LENGTH_SHORT).show();
-                ModeListPreference.setSummary("Video Captioning");
-
-            }
-            if ("2".equals(key_mode)) {
-                MainActivity.setSelectedMode(2);
-                Toast.makeText(this, "Image Captioning is selected", Toast.LENGTH_SHORT).show();
-                ModeListPreference.setSummary("Image Captioning");
-
-            }
-            return true;
-        });
     }
 
 }

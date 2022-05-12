@@ -33,6 +33,7 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
 import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentification;
 import com.google.mlkit.common.model.DownloadConditions;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public VideoView videoView;
     Button camerabtn, galleryButton;
     TextView txtview, timingtxt;
+    MaterialButtonToggleGroup toggleButon;
     ImageView imgView;
     AnimatedVectorDrawableCompat avd;
     AnimatedVectorDrawable avd2;
@@ -98,15 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static int getSelectedMode(int selectedMode) {
-        Log.d("mode", "LANGUAGE IS SELECTED");
-        Log.d("mode", String.valueOf(selectedMode));
-        return selectedMode;
-    }
 
-    public static void setSelectedMode(int state) {
-        selectedMode = state;
-    }
+
+
 
 
     public static String assetFilePath(Context context, String assetName) throws IOException {
@@ -139,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         txtview = findViewById(R.id.commandview);
         galleryButton = findViewById(R.id.galleryButton);
         timingtxt = findViewById(R.id.timing);
+        toggleButon = findViewById(R.id.toggleGroup);
         videoView.setClipToOutline(true);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -188,6 +185,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        toggleButon.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
+            @Override
+            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
+                if(group.getCheckedButtonId()==R.id.button_imageCaptioning)
+                {
+                    selectedMode = 2;
+
+                }else if(group.getCheckedButtonId()==R.id.button_videoCaptioning) {
+                    selectedMode = 1;
+                }
+            }
+        });
     }
 
     @Override
@@ -226,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (x1 > x2) {
                     Intent i = new Intent(MainActivity.this, SwipeRight.class);
-                    getSelectedMode(selectedMode);
+
                     if (selectedMode == 1) {
                         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                         intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
@@ -264,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
         */
 
-        getSelectedMode(selectedMode);
+
         if (selectedMode == 1) {
             Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
@@ -604,7 +614,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void galleryStart(View view) {
 
-        getSelectedMode(selectedMode);
+
         if (selectedMode == 1) {
             Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
             if (selectedLanguage == 41) {
